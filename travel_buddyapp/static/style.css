@@ -1,0 +1,106 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 0 auto;
+    padding: 30px;
+    background-color: dodgerblue;
+    min-height: 700px;
+    height: inherit;
+}
+h1{
+    margin-bottom: 15px;
+    display: inline-block;
+    margin-right: 400px;
+    width: 300px;
+}
+form h3{
+    display: inline-block;
+}
+h3{
+    width: 120px;
+    margin-bottom: 15px;
+}
+.RegForm{
+    display: inline-block;
+    width: 250px;
+    height: 300px;
+    margin-left: 50px;
+    outline: 2px solid black;
+    padding: 5px;
+}
+.LogForm{
+    display: inline-block;
+    width: 250px;
+    height: 200px;
+    vertical-align: top;
+    margin-left: 50px;
+    outline: 2px solid black;
+    padding: 5px;
+}
+button{
+    font-size: 15px;
+    padding: 5px 10px;
+    margin-left: 120px;
+    margin-top: 20px;
+    box-shadow: 3px 3px;
+}
+li{
+    margin-left: 60px;
+    color: crimson;
+}
+.table1 h3{
+    width: 250px;
+    margin-bottom: 5px;
+}
+.table2 h3{
+    width: 250px;
+    margin-top: 40px;
+}
+a{
+    color: white;
+    vertical-align: top;
+    margin: 0 15px;
+}
+.addform{
+    width: 400px;
+    display: inline-block;
+}
+.addform h3{
+    width: 200px;
+    vertical-align: top;
+}
+tr{
+    outline: 1px solid black;
+}
+th{
+    margin-right: 10px;
+    padding: 0 10px;
+}
+td{
+    font-size: 17px;
+    padding: 5px 15px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    text-align: center;
+}
+table{
+    width: 760px;
+    display: inline-block;
+}
+table a{
+    color: pink;
+}
+h4{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+.body{
+    width: 400px;
+    display: inline-block;
+}
+.joinlink{
+    color: yellow;
+}

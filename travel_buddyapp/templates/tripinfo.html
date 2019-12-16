@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Destination</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="body">
+            <h2>{{trip.destination}}</h2>
+            <h4>Planned by: {{trip.creator.name}}</h4>
+            <h4>Description: {{trip.plan}}</h4>
+            <h4>Travel Date From: {{trip.travel_start_date}}</h4>
+            <h4>Travel Date To: {{trip.travel_end_date}}</h4>
+            <h2>Other users' joining the trip:</h2>
+            {% for x in trip.participants.all %}
+            <h4>{{x.name}}</h4>
+            {% endfor %}
+        </div>
+        <a href="/travels">Home</a>
+        <a href="/logout">Logout</a>
+    </div>
+</body>
+</html>
