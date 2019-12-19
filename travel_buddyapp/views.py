@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from .models import User, Trip
 import bcrypt
 from django.db.models import Q
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 def home(request):
@@ -91,3 +92,12 @@ def join(request, tripid):
 def logout(request):
     request.session.clear()
     return redirect('/')
+
+def upload(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES['image']
+        fs = FileSystemStorage()
+        name = fs.save(uploaded_file.name, uploaded_file)
+        url = fs.url(name)
+
+    return redirect('/travels/add')
