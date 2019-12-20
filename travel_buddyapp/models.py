@@ -14,8 +14,8 @@ class UserManager(models.Manager):
             errors['username']= "Username must be at least 3 characters"
         if len(filterusername) > 0:
             errors['username'] = "This username is already taken"
-        if len(postdata['password']) < 8:
-            errors['password'] = "Password must be atleast 8 characters"
+        if len(postdata['password']) < 6:
+            errors['password'] = "Password must be atleast 6 characters"
         if postdata['confirmpw'] != postdata['password']:
             errors['confirmpw'] = "Password not confirmed"
         return errors
@@ -35,13 +35,13 @@ class UserManager(models.Manager):
         time = datetime.now()
         errors = {}
         if len(postdata['dest']) < 1:
-            errors['dest'] = "Destination cannot be empty"
+            errors['dest'] = "Title cannot be empty"
         if len(postdata['desc']) < 1:
             errors['desc'] = "Description cannot be empty"
         if postdata['travel_from'] < str(time):
-            errors['travel_from'] = "Travel start date cannot be in the past"
+            errors['travel_from'] = "Start date cannot be in the past"
         if postdata['travel_to'] < postdata['travel_from']:
-            errors['travel_to'] = "Travel end date must be after travel start date"
+            errors['travel_to'] = "End date must be after start date"
         return errors
 
 class User(models.Model):

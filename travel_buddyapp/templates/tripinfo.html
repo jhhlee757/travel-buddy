@@ -27,11 +27,11 @@
         <div class="jumbotron bg-info">
             <div class="body">
                 <h2>{{trip.destination}}</h2>
-                <h5>Planned by: {{trip.creator.name}}</h5>
+                <h5>Created by: {{trip.creator.name}}</h5>
                 <h5>Description: {{trip.plan}}</h5>
-                <h5>Travel Date From: {{trip.travel_start_date}}</h5>
-                <h5>Travel Date To: {{trip.travel_end_date}}</h5>
-                <h2>Other users' joining the trip:</h2>
+                <h5>Start Date: {{trip.travel_start_date}}</h5>
+                <h5>End Date: {{trip.travel_end_date}}</h5>
+                <h2>Other users' who have joined:</h2>
                 {% for x in trip.participants.all %}
                 <p>{{x.name}}</p>
                 {% endfor %}

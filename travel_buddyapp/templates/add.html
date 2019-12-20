@@ -22,6 +22,7 @@
 }
 button{
     margin-top: 10px;
+    margin-bottom: 10px;
 }
     
 </style>
@@ -38,11 +39,11 @@ button{
                 {% endif %}
                 <form action="/add" method="post" class="addform">
                     {% csrf_token %}
-                    <h1>Add a Trip</h1>
-                    <h3>Destination:</h3><input type="text" name="dest" id="" class="form-control form-rounded">
+                    <h1>Add an Event</h1>
+                    <h3>Title:</h3><input type="text" name="dest" id="" class="form-control form-rounded">
                     <h3>Description:</h3><textarea name="desc" id="" cols="30" rows="10" class="form-control form-rounded"></textarea>
-                    <h3>Travel Date From:</h3><input type="date" name="travel_from" id="" class="form-control form-rounded">
-                    <h3>Travel Date To:</h3><input type="date" name="travel_to" id="" class="form-control form-rounded">
+                    <h3>Start Date:</h3><input type="date" name="travel_from" id="" class="form-control form-rounded">
+                    <h3>End Date:</h3><input type="date" name="travel_to" id="" class="form-control form-rounded">
                     <button type="submit" class="btn btn-warning">Add</button>
                 </form>
                 <!-- <form action="/upload" method="post" enctype="multipart/form-data">
