@@ -24,7 +24,7 @@ def register(request):
         user = User.objects.create(name = request.POST['name'], username = request.POST['username'],
         password = hashpass)
         request.session['loggedID'] = user.id
-        return redirect('/travels')
+        return redirect('/events')
 
 def login(request):
     errors = User.objects.validator2(request.POST)
@@ -37,9 +37,9 @@ def login(request):
         if len(user) > 0:
             logged_user = user[0]
             request.session['loggedID'] = logged_user.id
-    return redirect('/travels')
+    return redirect('/events')
 
-def travels(request):
+def events(request):
     if 'loggedID' in request.session:
         user = User.objects.get(id = request.session['loggedID'])
         trip = Trip.objects.filter(Q(creator = user) | Q(participants = user))
@@ -62,7 +62,7 @@ def add(request):
     if len(errors) > 0:
         for key, value in errors.items():
             messages.error(request, value)
-        return redirect("/travels/add")
+        return redirect("/events/add")
     else:
         trip = Trip.objects.create(destination = request.POST['dest'],
         travel_start_date = request.POST['travel_from'], travel_end_date = request.POST['travel_to'],
@@ -72,7 +72,7 @@ def add(request):
             'trip' : trip
         }
 
-    return redirect('/travels', context)
+    return redirect('/events', context)
 
 def destination(request, tripid):
     trip = Trip.objects.get(id = tripid)
@@ -87,7 +87,7 @@ def join(request, tripid):
     userToAdd = User.objects.get(id = request.session['loggedID'])
     trip = Trip.objects.get(id = tripid)
     trip.participants.add(userToAdd)
-    return redirect('/travels')
+    return redirect('/events')
 
 def logout(request):
     request.session.clear()
@@ -100,4 +100,4 @@ def upload(request):
         name = fs.save(uploaded_file.name, uploaded_file)
         url = fs.url(name)
 
-    return redirect('/travels/add')
+    return redirect('/events/add')

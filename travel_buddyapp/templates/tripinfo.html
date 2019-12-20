@@ -26,17 +26,17 @@
     <div class="container">
         <div class="jumbotron bg-info">
             <div class="body">
-                <h2>{{trip.destination}}</h2>
+                <h2 class="text-light">{{trip.destination}}</h2>
                 <h5>Created by: {{trip.creator.name}}</h5>
                 <h5>Description: {{trip.plan}}</h5>
                 <h5>Start Date: {{trip.travel_start_date}}</h5>
                 <h5>End Date: {{trip.travel_end_date}}</h5>
-                <h2>Other users' who have joined:</h2>
+                <h2 class="text-light">Other users' who have joined:</h2>
                 {% for x in trip.participants.all %}
                 <p>{{x.name}}</p>
                 {% endfor %}
             </div>
-            <a href="/travels" class="home text-warning">Home</a>
+            <a href="/events" class="home text-warning">Home</a>
             <a href="/logout" class="logout text-danger">Logout</a>
         </div>
     </div>

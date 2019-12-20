@@ -9,10 +9,10 @@ urlpatterns = [
     path('main', views.main),
     path('register', views.register),
     path('login', views.login),
-    path('travels', views.travels),
-    path('travels/add', views.addpage),
+    path('events', views.events),
+    path('events/add', views.addpage),
     path('add', views.add),
-    path('travels/destination/<tripid>', views.destination),
+    path('events/destination/<tripid>', views.destination),
     path('join/<tripid>', views.join),
     path('logout', views.logout),
     path('upload', views.upload)

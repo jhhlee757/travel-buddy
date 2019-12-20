@@ -15,18 +15,16 @@ h1{
 .logout{
     float: right;
 }
-table{
-    
-}
+
 
 </style>
 <body>
     <div class="container">
         <div class="jumbotron bg-info">
-            <h1>Hello, {{user.name}}!</h1>
+            <h1 class="text-light">Hello, {{user.name}}!</h1>
             <a href="logout" class="logout text-danger">Logout</a>
             <div class="table1">
-                <h3>Your Events</h3>
+                <h3 class="text-dark">Your Events</h3>
                 <table class="table table-striped table-hover table-dark">
                     <tr>
                         <th class="text-center">Event</th>
@@ -36,7 +34,7 @@ table{
                     </tr>
                     {% for trip in trip.distinct %}
                     <tr>
-                        <td class="text-center"><a href="/travels/destination/{{trip.id}}" class="text-warning">{{trip.destination}}</a></td>
+                        <td class="text-center"><a href="/events/destination/{{trip.id}}" class="text-warning">{{trip.destination}}</a></td>
                         <td class="text-center">{{trip.travel_start_date}}</td>
                         <td class="text-center">{{trip.travel_end_date}}</td>
                         <td class="text-center">{{trip.plan}}</td> 
@@ -44,9 +42,9 @@ table{
                     {% endfor %}
                 </table>
             </div>
-            <a href="travels/add" class="text-warning">Add an Event</a>
+            <a href="events/add" class="text-warning">Add an Event</a>
             <div class="table2">
-                <h3>Other Events</h3>
+                <h3 class="text-dark">Other Events</h3>
                 <table class="table table-striped table-hover table-dark">
                     <tr>
                         <th class="text-center">Creator</th>
@@ -58,7 +56,7 @@ table{
                     {% for trip in othertrips %}
                     <tr>
                         <td class="text-center">{{trip.creator.name}}</td>
-                        <td class="text-center"><a href="/travels/destination/{{trip.id}}" class="text-warning">{{trip.destination}}</a></td>
+                        <td class="text-center"><a href="/events/destination/{{trip.id}}" class="text-warning">{{trip.destination}}</a></td>
                         <td class="text-center">{{trip.travel_start_date}}</td>
                         <td class="text-center">{{trip.travel_end_date}}</td>
                         <td class="text-center"><a class="text-primary" href="/join/{{trip.id}}">Join</a></td> 
