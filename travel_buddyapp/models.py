@@ -62,3 +62,17 @@ class Trip(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+
+class Message(models.Model):
+    user_id = models.ForeignKey(User, related_name="usermessages", on_delete = models.CASCADE)
+    trip_id = models.ForeignKey(Trip, related_name="tripmessages", on_delete = models.CASCADE)
+    messages = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+class Comment(models.Model):
+    message_id = models.ForeignKey(Message, related_name="messagecomments", on_delete = models.CASCADE)
+    user_id = models.ForeignKey(User, related_name="usercomments", on_delete = models.CASCADE)
+    comments = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

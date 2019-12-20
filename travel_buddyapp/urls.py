@@ -15,7 +15,10 @@ urlpatterns = [
     path('events/destination/<tripid>', views.destination),
     path('join/<tripid>', views.join),
     path('logout', views.logout),
-    path('upload', views.upload)
+    path('upload', views.upload),
+    path('postmessage/<tripid>', views.postmessage),
+    path('postcomment/<messageid>', views.postcomment),
+    path('events/destination/<tripid>/delete/<userid>', views.deletemessage),
     # path('admin/', admin.site.urls),
 ] 
 

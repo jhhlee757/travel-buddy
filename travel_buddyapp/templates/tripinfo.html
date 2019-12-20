@@ -20,21 +20,58 @@
     vertical-align: top;
     float: right;
 }
+textarea{
+    height: 30px;
+}
+p{
+    margin-left: 10px;
+}
 
 </style>
 <body>
     <div class="container">
         <div class="jumbotron bg-info">
             <div class="body">
-                <h2 class="text-light">{{trip.destination}}</h2>
+                <h2 class="text-warning">{{trip.destination}}</h2>
                 <h5>Created by: {{trip.creator.name}}</h5>
                 <h5>Description: {{trip.plan}}</h5>
                 <h5>Start Date: {{trip.travel_start_date}}</h5>
                 <h5>End Date: {{trip.travel_end_date}}</h5>
                 <h2 class="text-light">Other users' who have joined:</h2>
-                {% for x in trip.participants.all %}
-                <p>{{x.name}}</p>
-                {% endfor %}
+                {% for y in trip.participants.all %}
+                <h4 class="text-dark">{{y.name}}</h4>
+                    {% for x in y.usermessages.all %}
+                        {% if x.trip_id == trip %}
+                        <div class="messagecontent">
+                            <p>{{x.messages}} {% if user == x.user_id %}
+                                <a href="/events/destination/{{trip.id}}/delete/{{x.id}}" class="text-danger">Delete</a>{% endif %}
+                            </p>  
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                    {% if user == y %}
+                    <form action="/postmessage/{{trip.id}}" method="post">
+                        {% csrf_token %}
+                        <h6 class="postmessage text-light">Comment</h6>
+                        <textarea name="messagepost" id="messagebox" cols="30" rows="10"></textarea>
+                        <button type="submit" class="messagebutton btn btn-dark btn-sm">Post</button>
+                    </form>
+                    {% endif %}
+                    {% endfor %}
+                    <!-- {% for y in x.messagecomments.all %}
+                    <div class="commentcontent">
+                        <h4>{{y.user_id.firstname}} {{y.user_id.lastname}} - {{y.created_at}}</h4>
+                        <p>{{y.comments}}</p>
+                    </div>
+                    {% endfor %}
+                    {% if message %}
+                    <form action="/postcomment/{{x.id}}" method="post">
+                        {% csrf_token %}
+                        <h3 class="postcomment">Post a comment</h3>
+                        <textarea name="commentpost" id="commentbox" cols="30" rows="10"></textarea>
+                        <button type="submit" class="commentbutton">Post a comment</button>
+                    </form>
+                    {% endif %} -->       
             </div>
             <a href="/events" class="home text-warning">Home</a>
             <a href="/logout" class="logout text-danger">Logout</a>

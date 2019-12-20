@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, HttpResponse
-from .models import User, Trip
+from .models import User, Trip, Message, Comment
 import bcrypt
 from django.db.models import Q
 from django.core.files.storage import FileSystemStorage
@@ -77,9 +77,11 @@ def add(request):
 def destination(request, tripid):
     trip = Trip.objects.get(id = tripid)
     user = User.objects.get(id = request.session['loggedID'])
+    message = Message.objects.all()
     context = {
         "trip": trip,
-        'user': user
+        'user': user,
+        'message': message
     }
     return render(request, 'tripinfo.html', context)
 
@@ -101,3 +103,25 @@ def upload(request):
         url = fs.url(name)
 
     return redirect('/events/add')
+
+def postmessage(request, tripid):
+    user = User.objects.get(id = request.session['loggedID'])
+    tripID = Trip.objects.get(id = tripid)
+    message = Message.objects.create(user_id = user, trip_id = tripID, messages = request.POST['messagepost'])
+    context = {
+        'message': message,
+        'user': user
+    }
+    return redirect('/events/destination/' + str(tripid), context)
+
+def postcomment(request, messageid):
+    user = User.objects.get(id = request.session['loggedID'])
+    message = Message.objects.get(id = messageid)
+    comment = Comment.objects.create(message_id = message, user_id = user,
+    comments = request.POST['commentpost'])
+    return redirect('/events/destination/<tripid>')
+
+def deletemessage(request, userid, tripid):
+    message = Message.objects.get(id = userid)
+    message.delete()
+    return redirect('/events/destination/' + str(tripid))
