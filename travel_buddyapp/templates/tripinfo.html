@@ -21,7 +21,7 @@
     float: right;
 }
 textarea{
-    height: 30px;
+    height: 35px;
 }
 p{
     margin-left: 10px;
@@ -53,9 +53,12 @@ p{
                     <form action="/postmessage/{{trip.id}}" method="post">
                         {% csrf_token %}
                         <h6 class="postmessage text-light">Comment</h6>
-                        <textarea name="messagepost" id="messagebox" cols="30" rows="10"></textarea>
-                        <button type="submit" class="messagebutton btn btn-dark btn-sm">Post</button>
+                        <div class="form-inline">
+                            <textarea name="messagepost" id="messagebox" cols="30" rows="10"></textarea>
+                            <button type="submit" class="messagebutton btn btn-dark btn-sm">Post</button>
+                        </div>
                     </form>
+                            
                     {% endif %}
                     {% endfor %}
                     <!-- {% for y in x.messagecomments.all %}
